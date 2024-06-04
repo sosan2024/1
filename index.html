@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장소 세부 정보</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+
+        .header-image {
+            width: 100%;
+            height: 200px;
+            background: url('https://blog.kakaocdn.net/dn/k3QiZ/btqTF2jsqMB/2p4pxxtzBP8To2Dx3GAZLK/img.png') no-repeat center center;
+            background-size: cover;
+        }
+
+        .container {
+            padding: 20px;
+            background: white;
+        }
+
+        .place-name {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .details {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .details .rating {
+            color: red;
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+
+        .details .info {
+            color: #777;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            padding: 10px 0;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .actions div {
+            text-align: center;
+            color: #555;
+        }
+
+        .info-section, .reviews-section {
+            margin: 20px 0;
+        }
+
+        .info-section h2, .reviews-section h2 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .info-section p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .menu-section {
+            margin: 20px 0;
+        }
+
+        .menu-section h2 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .review {
+            border-radius: 10px;
+            background-color: #fff;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .review p {
+            margin: 5px 0;
+        }
+
+        .delete-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        
+    </style>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>링크 복사</title>
+    <style>
+        .copy-link {
+            cursor: pointer;
+            color: blue;
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>링크 이동</title>
+    <style>
+        .clickable {
+            cursor: pointer;
+            color: blue;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="header-image"></div>
+    <div class="container">
+        <div class="place-name">김밥나라 청학점</div>
+        <div class="details">
+            <div class="rating">3.5 &#9733;</div>
+            <div class="info"> 한줄평: 메뉴가 다양한 야자쌤들 단골집</div>
+        </div>
+        <div class="actions">
+            <div class="clickable" onclick="navigateTo('https://www.google.co.kr/maps/place/%EA%B9%80%EB%B0%A5%EB%82%98%EB%9D%BC/data=!3m1!4b1!4m6!3m5!1s0x357cc7e77f4c3b69:0x2ac13258a1751ef3!8m2!3d37.7086365!4d127.1178736!16s%2Fg%2F11f64dts3d?hl=ko&entry=ttu')">구글</div>
+            <div class="clickable" onclick="navigateTo('https://map.naver.com/p/entry/place/1071705659?c=16.00,0,0,0,dh')">네이버</div>
+            <div class="clickable" onclick="navigateTo('https://place.map.kakao.com/1494831369')">카카오</div>
+            <div class="clickable" onclick="navigateTo('https://naver.me/xucNoWKU')">길찾기</div>
+            <div class="copy-link" onclick="copyToClipboard('https://6d59db8d-f2f0-42f3-8142-904abbccccc5-00-ml8ja35ing1f.pike.replit.dev/?review=%E3%84%B4%E3%84%B4&rating=1.0')">공유</div>
+        </div>
+        <div class="info-section">
+            <h2>정보</h2>
+            <p><strong>주소:</strong> 경기 남양주시 별내면 청학로중앙길 15</p>
+            <p><strong>연락처:</strong> 031-841-3360</p>
+            <p><strong>거리(학교-가게):</strong> 10분</p>
+            <p><strong>TMI1:</strong> 돈가스는 별로..</p>
+            <p><strong>TMI2:</strong> 김밥위주로 드세요</p>
+        </div>
+        <div class="menu-section">
+            <h2>메뉴</h2>
+            <div class="menu-item">
+                <div>야채김밥</div>
+                <div>2,500원</div>
+            </div>
+            <div class="menu-item">
+                <div>김치김밥</div>
+                <div>4,000원</div>
+            </div>
+            <div class="menu-item">
+                <div>우동</div>
+                <div>4,000원</div>
+            </div>
+                <div class="menu-item">
+                    <div>돈가스</div>
+                    <div>7,000원</div>
+                </div>
+            <div class="menu-item">
+                <div>오징어 덮밥</div>
+                <div>7,000원</div>
+            </div>
+            <!-- 추가 메뉴 항목은 여기 추가 -->
+     </div>
+        <div class="reviews-section">
+            <h2>리뷰</h2>
+            <div id="reviewList"></div> <!-- 리뷰가 표시될 영역 -->
+
+            <!-- 리뷰 폼 -->
+            
+            <h2>리뷰 남기기</h2>
+            <form id="reviewForm">
+                <label for="review"></label>
+                <textarea id="review" name="review"></textarea>  <label for="rating"></label>
+                    <div class="rating">
+                        <label class="rating__label rating__label--half" for="starhalf">
+                            <input type="radio" id="starhalf" class="rating__input" name="rating" value=⭐0.5>
+                            <span class="star-icon"></span>
+                        </label>
+                        <label class="rating__label rating__label--full" for="star1">
+                            <input type="radio" id="star1" class="rating__input" name="rating" value=⭐1.0>
+                            <span class="star-icon"></span>
+                        </label>
+                        <label class="rating__label rating__label--half" for="star1half">
+                            <input type="radio"  id="star1half" class="rating__input" name="rating" value=⭐1.5>
+                            <span class="star-icon"></span>
+                        </label>
+                        <label class="rating__label rating__label--full" for="star2">
+                            <input type="radio" id="star2" class="rating__input" name="rating" value=⭐2.0>
+                            <span class="star-icon"></span>
+                        </label>
+                        <label class="rating__label rating__label--half" for="star2half">
+                            <input type="radio" id="star2half" class="rating__input" name="rating" value=⭐2.5>
+                            <span class="star-icon"></span>
+                        </label>
+                        <label class="rating__label rating__label--full" for="star3">
+                            <input type="radio" id="star3" class="rating__input" name="rating" value=⭐3.0>
+                            <span class="star-icon"></span>
+                        </label>
+                        <label class="rating__label rating__label--half" for="star3half">
+                            <input type="radio" id="star3half" class="rating__input" name="rating" value=⭐3.5>
+                            <span class="star-icon"></span>
+                        </label>
+                        <label class="rating__label rating__label--full" for="star4">
+                            <input type="radio" id="star4" class="rating__input" name="rating" value=⭐4.0>
+                            <span class="star-icon"></span>
+                        </label>
+                        <label class="rating__label rating__label--half" for="star4half">
+                            <input type="radio" id="star4half" class="rating__input" name="rating" value=⭐4.5>
+                            <span class="star-icon"></span>
+                        </label>
+                        <label class="rating__label rating__label--full" for="star5">
+                            <input type="radio" id="star5" class="rating__input" name="rating" value=⭐5.0>
+                            <span class="star-icon"></span>
+                           
+                            <style>
+                            
+                                .rating__input {
+                                    display: none; /* 라디오버튼 hide */
+                                }
+
+                                .rating__label .star-icon {
+                                    width: 24px;
+                                    height: 24px;
+                                    display: block;
+                                    background-image: url("../images/ico-star-empty.svg");
+                                    background-repeat: no-repeat;
+                                }
+                                
+                                .rating {
+                                    float: none;
+                                    width: 150px;
+                                    display: flex;
+                                    /* 기존 코드 */
+                                }
+
+                                .rating .star-icon {
+                                    width: 20px;
+                                    height: 40px;
+                                    display: block;
+                                    position: relative;
+                                    left: -15px;
+                                    background-repeat: no-repeat;
+                                    background-size: 40px;
+                                }
+
+                                .rating .star-icon.filled {
+                                    background-image: url('https://velog.velcdn.com/images/jellykelly/post/10caf033-b0ef-4d58-804b-6e33395e4ea5/image.svg');
+                                    /* 별이 채워진 이미지 */
+                                }
+
+                                .rating .star-icon:not(.filled) {
+                                    background-image: url('https://velog.velcdn.com/images/jellykelly/post/9957327f-f358-4c25-9989-5bb3dd5755d6/image.svg');
+                                    /* 별이 비어있는 이미지 */
+                                }
+
+                                .rating__label--full .star-icon {
+                                    background-position: center right; /* 별 아이콘을 가운데에 정확하게 맞춥니다. */
+                                }
+
+                                .rating__label--half .star-icon {
+                                    background-position: center left; /* 별 아이콘을 가운데에 정확하게 맞춥니다. */
+                                }
+                            </style>
+
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" id="submitReview">제출</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        const rateWrap = document.querySelectorAll('.rating'),
+            label = document.querySelectorAll('.rating .rating__label'),
+            input = document.querySelectorAll('.rating .rating__input'),
+            labelLength = label.length,
+            opacityHover = '0.5';
+
+        let stars = document.querySelectorAll('.rating .star-icon');
+
+        checkedRate();
+
+
+        rateWrap.forEach(wrap => {
+            wrap.addEventListener('mouseenter', () => {
+                stars = wrap.querySelectorAll('.star-icon');
+
+                stars.forEach((starIcon, idx) => {
+                    starIcon.addEventListener('mouseenter', () => {
+                        if (wrap.classList.contains('readonly') == false) {
+                            initStars(); // 기선택된 별점 무시하고 초기화
+                            filledRate(idx, labelLength);  // hover target만큼 별점 active
+
+                            // hover 시 active된 별점의 opacity 조정
+                            for (let i = 0; i < stars.length; i++) {
+                                if (stars[i].classList.contains('filled')) {
+                                    stars[i].style.opacity = opacityHover;
+                                }
+                            }
+                        }
+                    });
+
+                    starIcon.addEventListener('mouseleave', () => {
+                        if (wrap.classList.contains('readonly') == false) {
+                            starIcon.style.opacity = '1';
+                            checkedRate(); // 체크된 라디오 버튼 만큼 별점 active
+                        }
+                    });
+
+                    // rate wrap을 벗어날 때 active된 별점의 opacity = 1
+                    wrap.addEventListener('mouseleave', () => {
+                        if (wrap.classList.contains('readonly') == false) {
+                            starIcon.style.opacity = '1';
+                        }
+                    });
+
+                    // readonnly 일 때 비활성화
+                    wrap.addEventListener('click', (e) => {
+                        if (wrap.classList.contains('readonly')) {
+                            e.preventDefault();
+                        }
+                    });
+                });
+            });
+        });
+
+        // target보다 인덱스가 낮은 .star-icon에 .filled 추가 (별점 구현)
+        function filledRate(index, length) {
+            if (index <= length) {
+                for (let i = 0; i <= index; i++) {
+                    stars[i].classList.add('filled');
+                }
+            }
+        }
+
+        // 선택된 라디오버튼 이하 인덱스는 별점 active
+        function checkedRate() {
+            let checkedRadio = document.querySelectorAll('.rating input[type="radio"]:checked');
+
+
+            initStars();
+            checkedRadio.forEach(radio => {
+                let previousSiblings = prevAll(radio);
+
+                for (let i = 0; i < previousSiblings.length; i++) {
+                    previousSiblings[i].querySelector('.star-icon').classList.add('filled');
+                }
+
+                radio.nextElementSibling.classList.add('filled');
+
+                function prevAll() {
+                    let radioSiblings = [],
+                        prevSibling = radio.parentElement.previousElementSibling;
+
+                    while (prevSibling) {
+                        radioSiblings.push(prevSibling);
+                        prevSibling = prevSibling.previousElementSibling;
+                    }
+                    return radioSiblings;
+                }
+            });
+        }
+
+        // 별점 초기화 (0)
+        function initStars() {
+            for (let i = 0; i < stars.length; i++) {
+                stars[i].classList.remove('filled');
+            }
+        }
+        </script>
+
+
+    <script>
+        // 로컬스토리지에서 리뷰 데이터를 불러오는 함수
+function loadReviews() {
+    var reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+    reviews.forEach(function(review) {
+        addReview(review.text, review.rating, false);
+    });
+}
+
+// 리뷰를 추가하는 함수
+function addReview(review, rating, save = true) {
+    // 리뷰 요소 생성
+    var reviewElement = document.createElement('div');
+    reviewElement.classList.add('review');
+    reviewElement.innerHTML = '<p><strong>별점:</strong> ' + rating + '</p><p><strong>리뷰:</strong> ' + review + '</p>';
+
+    /*삭제 버튼 추가
+    var deleteButton = document.createElement('button');
+    deleteButton.classList.add('delete-button');
+    deleteButton.textContent = '삭제';
+    deleteButton.onclick = function() {
+        reviewElement.remove();
+        // 삭제된 리뷰를 로컬스토리지에서도 제거
+        if (save) {
+            removeReview(review, rating);
+        }
+    };
+    reviewElement.appendChild(deleteButton); */
+
+    // 리뷰 목록에 추가
+    var reviewList = document.getElementById('reviewList');
+    reviewList.appendChild(reviewElement);
+
+    // 새로운 리뷰를 로컬스토리지에 저장
+    if (save) {
+        saveReview(review, rating);
+    }
+}
+
+// 리뷰를 로컬스토리지에 저장하는 함수
+function saveReview(review, rating) {
+    var reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+    reviews.push({ text: review, rating: rating });
+    localStorage.setItem('reviews', JSON.stringify(reviews));
+}
+
+// 리뷰를 로컬스토리지에서 제거하는 함수
+function removeReview(review, rating) {
+    var reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+    reviews = reviews.filter(function(item) {
+        return item.text !== review || item.rating !== rating;
+    });
+    localStorage.setItem('reviews', JSON.stringify(reviews));
+}
+
+// 페이지 로드 시 저장된 리뷰 불러오기
+window.onload = function() {
+    loadReviews();
+};
+
+// 리뷰 제출 폼
+document.getElementById('reviewForm').onsubmit = function(event) {
+    event.preventDefault();
+    var reviewInput = document.getElementById('review');
+    var ratingInput = document.querySelector('.rating input[name="rating"]:checked');
+    if (!ratingInput || !reviewInput.value) {
+        alert('리뷰와 별점을 모두 입력해주세요.');
+        return;
+    }
+    var reviewText = reviewInput.value;
+    var ratingValue = ratingInput.value;
+    addReview(reviewText, ratingValue);
+    reviewInput.value = '';
+    ratingInput.checked = false;
+};
+
+    </script>
+    <script>
+        // 클립보드에 텍스트를 복사하는 함수
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('복사되었습니다: ' + text);
+        }
+    </script>
+    <script>
+        // 주어진 URL로 이동하는 함수
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+    </script>
+</body></html>
